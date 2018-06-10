@@ -10,6 +10,7 @@ import UIKit
 
 class UserCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var sourceLabel: UILabel!
 
     @IBOutlet weak var avatarImageView: UIImageView!
 
@@ -18,6 +19,7 @@ class UserCell: UITableViewCell {
     func configure(with userViewModel: UserViewModel) {
         viewModel = userViewModel
         nameLabel.text = userViewModel.name
+        sourceLabel.text = userViewModel.source
 
         userViewModel.avatar { [weak self] (image, error) in
             if let image = image {
@@ -30,5 +32,7 @@ class UserCell: UITableViewCell {
         super.prepareForReuse()
 
         viewModel = nil
+
+        avatarImageView.image = nil
     }
 }

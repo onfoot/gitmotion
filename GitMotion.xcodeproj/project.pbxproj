@@ -80,27 +80,59 @@
 		A2401F5920C73756006D31F5 /* GitMotion */ = {
 			isa = PBXGroup;
 			children = (
-				A2401F5A20C73756006D31F5 /* AppDelegate.swift */,
-				A2401F5E20C73756006D31F5 /* Main.storyboard */,
-				A2E107ED20CD4B91002A2CB7 /* StartViewController.swift */,
 				A2401F6120C73757006D31F5 /* Assets.xcassets */,
+				A2401F5E20C73756006D31F5 /* Main.storyboard */,
+				A2401F5A20C73756006D31F5 /* AppDelegate.swift */,
+				A2E107ED20CD4B91002A2CB7 /* StartViewController.swift */,
 				A2401F6320C73757006D31F5 /* LaunchScreen.storyboard */,
 				A2401F6620C73757006D31F5 /* Info.plist */,
-				A2401F6C20C73CFE006D31F5 /* Model.swift */,
-				A2E107D320CB383F002A2CB7 /* Network.swift */,
-				A2E107D520CB3955002A2CB7 /* API.swift */,
-				A2E107D720CB3F4D002A2CB7 /* UsersViewModel.swift */,
+				A2E107F220CDA35A002A2CB7 /* Base */,
+				A2E107F020CDA2F0002A2CB7 /* Model */,
+				A2E107F120CDA325002A2CB7 /* Users */,
+				A2E107EF20CDA2DB002A2CB7 /* User */,
+			);
+			path = GitMotion;
+			sourceTree = "<group>";
+		};
+		A2E107EF20CDA2DB002A2CB7 /* User */ = {
+			isa = PBXGroup;
+			children = (
 				A2E107E920CD0D06002A2CB7 /* UserViewModel.swift */,
-				A2E107EB20CD0F24002A2CB7 /* AvatarFetcher.swift */,
-				A2E107DB20CB5757002A2CB7 /* UsersViewController.swift */,
-				A2E107E720CD098A002A2CB7 /* UsersRouter.swift */,
 				A2E107E320CB5892002A2CB7 /* UserCell.swift */,
 				A2E107E420CB5892002A2CB7 /* UserCell.xib */,
-				A2E107DC20CB5757002A2CB7 /* UsersViewController.xib */,
 				A2E107DF20CB57CE002A2CB7 /* UserViewController.swift */,
 				A2E107E020CB57CE002A2CB7 /* UserViewController.xib */,
 			);
-			path = GitMotion;
+			path = User;
+			sourceTree = "<group>";
+		};
+		A2E107F020CDA2F0002A2CB7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A2401F6C20C73CFE006D31F5 /* Model.swift */,
+				A2E107D520CB3955002A2CB7 /* API.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A2E107F120CDA325002A2CB7 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				A2E107E720CD098A002A2CB7 /* UsersRouter.swift */,
+				A2E107EB20CD0F24002A2CB7 /* AvatarFetcher.swift */,
+				A2E107D720CB3F4D002A2CB7 /* UsersViewModel.swift */,
+				A2E107DB20CB5757002A2CB7 /* UsersViewController.swift */,
+				A2E107DC20CB5757002A2CB7 /* UsersViewController.xib */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		A2E107F220CDA35A002A2CB7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A2E107D320CB383F002A2CB7 /* Network.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
