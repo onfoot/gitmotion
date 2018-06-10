@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="UserCell" customModule="GitMotion" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tPZ-bc-rOf">
+                        <rect key="frame" x="0.0" y="4" width="48" height="48"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="1fK-p0-xbh"/>
+                            <constraint firstAttribute="width" constant="48" id="d7M-NY-17l"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPF-Nd-0ss">
+                        <rect key="frame" x="56" y="17.5" width="248" height="20.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dPF-Nd-0ss" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5h6-Kf-agc"/>
+                    <constraint firstItem="dPF-Nd-0ss" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="FZ8-ru-K6H"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="dPF-Nd-0ss" secondAttribute="trailing" id="YiT-u3-DWa"/>
+                    <constraint firstItem="dPF-Nd-0ss" firstAttribute="leading" secondItem="tPZ-bc-rOf" secondAttribute="trailing" constant="8" id="bVY-Qq-GaK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="tPZ-bc-rOf" secondAttribute="bottom" constant="4" id="SuM-IN-g9N"/>
+                <constraint firstItem="tPZ-bc-rOf" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" id="ycT-AB-097"/>
+                <constraint firstItem="tPZ-bc-rOf" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" constant="4" id="ytq-xL-ZdF"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="avatarImageView" destination="tPZ-bc-rOf" id="EtI-nk-9EV"/>
+                <outlet property="nameLabel" destination="dPF-Nd-0ss" id="CLr-2s-Fsl"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="117"/>
+        </tableViewCell>
+    </objects>
+</document>
