@@ -33,9 +33,11 @@ class AvatarSource: NSObject {
     }()
 
     private let urlSession: URLSession
+    private let queue: DispatchQueue
 
-    init(urlSession: URLSession) {
+    init(urlSession: URLSession, callbackQueue: DispatchQueue = DispatchQueue.global(qos: .userInitiated)) {
         self.urlSession = urlSession
+        self.queue = callbackQueue
     }
 
     private func fetchAvatar(for user: UserType) {
@@ -60,10 +62,8 @@ class AvatarSource: NSObject {
             let completions = self?.completions.removeValue(forKey: user.identifier)
 
             if let (user, _) = self?.avatarTasks.removeValue(forKey: user.identifier) {
-                DispatchQueue.main.async {
-                    completions?.forEach({ completion in
-                        completion(user, image, error)
-                    })
+                self?.queue.async {
+                    completions?.forEach { $0(user, image, error) }
                 }
             }
         }
@@ -75,7 +75,7 @@ class AvatarSource: NSObject {
 
     func avatar(for user: UserType, completion: @escaping CompletionHandler) {
         guard user.avatarURL != nil else {
-            DispatchQueue.main.async {
+            self.queue.async {
                 completion(user, nil, NoAvatarError())
             }
             return
@@ -84,17 +84,13 @@ class AvatarSource: NSObject {
         let avatarURL = cacheURL.appendingPathComponent(user.avatarFilename)
 
         if FileManager.default.fileExists(atPath: avatarURL.path) {
-            DispatchQueue.global(qos: .userInteractive).async {
+            self.queue.async {
                 if let image = UIImage(contentsOfFile: avatarURL.path) {
-                    DispatchQueue.main.async {
-                        completion(user, image, nil)
-                    }
+                    completion(user, image, nil)
                 } else {
-                    DispatchQueue.main.async {
-                        self.completions.removeValue(forKey: user.identifier)?.forEach({ handler in
-                            handler(user, nil, AvatarCorruptedError())
-                        })
-                    }
+                    self.completions
+                        .removeValue(forKey: user.identifier)?
+                        .forEach { $0(user, nil, AvatarCorruptedError()) }
                 }
             }
             return

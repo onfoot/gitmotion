@@ -18,13 +18,13 @@ class UserCell: UITableViewCell {
 
     var viewModel: UserViewModel?
 
-    func configure(with userViewModel: UserViewModel) {
-        viewModel = userViewModel
-        nameLabel.text = userViewModel.name
-        sourceLabel.text = userViewModel.source
+    func configure(with viewModel: UserViewModel) {
+        self.viewModel = viewModel
+        nameLabel.text = viewModel.name
+        sourceLabel.text = viewModel.source
 
         avatarLoadingIndicator.startAnimating()
-        userViewModel.avatar { [weak self] (image, error) in
+        viewModel.avatar { [weak self] (image, error) in
             self?.avatarLoadingIndicator.stopAnimating()
             if let image = image {
                 self?.avatarImageView.image = image

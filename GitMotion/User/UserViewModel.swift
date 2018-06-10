@@ -26,7 +26,9 @@ class UserViewModel {
 
     func avatar(_ completion: @escaping (UIImage?, Error?) -> Void) {
         avatarSource.avatar(for: user) { user, image, error in
-            completion(image, error)
+            DispatchQueue.main.async {
+                completion(image, error)
+            }
         }
     }
 
