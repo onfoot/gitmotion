@@ -20,6 +20,10 @@ class UserViewModel {
         return user.username
     }
 
+    var source: String {
+        return user.source.rawValue
+    }
+
     func avatar(_ completion: @escaping (UIImage?, Error?) -> Void) {
         avatarSource.avatar(for: user) { (user, image, error) in
             completion(image, error)

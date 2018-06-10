@@ -14,6 +14,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarLoadingIndicator: UIActivityIndicatorView!
 
+    @IBOutlet weak var sourceLabel: UILabel!
     let viewModel: UserViewModel
 
     required init(viewModel: UserViewModel) {
@@ -31,6 +32,7 @@ class UserViewController: UIViewController {
         super.viewDidLoad()
 
         nameLabel.text = viewModel.name
+        sourceLabel.text = viewModel.source
 
         avatarLoadingIndicator.startAnimating()
         viewModel.avatar { [weak self] image, _ in

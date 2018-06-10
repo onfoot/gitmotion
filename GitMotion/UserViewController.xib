@@ -17,6 +17,7 @@
                 <outlet property="avatarImageView" destination="ITF-pM-0G4" id="KxI-P2-eEO"/>
                 <outlet property="avatarLoadingIndicator" destination="HTR-8w-5lQ" id="rDj-3L-FhJ"/>
                 <outlet property="nameLabel" destination="NDa-hS-CNV" id="smc-r5-e2k"/>
+                <outlet property="sourceLabel" destination="TrK-lz-mMx" id="uQY-h1-4ls"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,17 +41,26 @@
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HTR-8w-5lQ">
                     <rect key="frame" x="177" y="94" width="20" height="20"/>
                 </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrK-lz-mMx">
+                    <rect key="frame" x="167" y="638" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="NDa-hS-CNV" firstAttribute="firstBaseline" secondItem="ITF-pM-0G4" secondAttribute="baseline" constant="24.5" symbolType="layoutAnchor" id="DwC-Wv-UXe"/>
+                <constraint firstItem="TrK-lz-mMx" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Hsh-Mz-8r2"/>
                 <constraint firstItem="NDa-hS-CNV" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="IFG-S6-ewv"/>
+                <constraint firstItem="TrK-lz-mMx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JpH-LX-QG3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ITF-pM-0G4" secondAttribute="trailing" id="VhI-vo-7fD"/>
                 <constraint firstItem="HTR-8w-5lQ" firstAttribute="centerY" secondItem="ITF-pM-0G4" secondAttribute="centerY" id="a0T-Mm-PB7"/>
                 <constraint firstItem="ITF-pM-0G4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="h0O-Yx-YHX"/>
                 <constraint firstItem="NDa-hS-CNV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="qoF-2j-kzd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="ITF-pM-0G4" secondAttribute="top" constant="16" id="v9F-7C-dxX"/>
                 <constraint firstItem="HTR-8w-5lQ" firstAttribute="centerX" secondItem="ITF-pM-0G4" secondAttribute="centerX" id="w0x-8b-LlE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="TrK-lz-mMx" secondAttribute="bottom" constant="8" id="yVM-NH-uNn"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
