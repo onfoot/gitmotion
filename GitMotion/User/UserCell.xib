@@ -43,10 +43,15 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mPW-fy-mif">
+                        <rect key="frame" x="14" y="18" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="EZ2-CN-dJR" firstAttribute="leading" secondItem="tPZ-bc-rOf" secondAttribute="trailing" constant="8" id="2O7-DF-Et4"/>
                     <constraint firstItem="EZ2-CN-dJR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GLC-CS-y28"/>
+                    <constraint firstItem="mPW-fy-mif" firstAttribute="centerX" secondItem="tPZ-bc-rOf" secondAttribute="centerX" id="vcn-s2-wa1"/>
+                    <constraint firstItem="mPW-fy-mif" firstAttribute="centerY" secondItem="tPZ-bc-rOf" secondAttribute="centerY" id="z9U-Cb-aKc"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
@@ -59,6 +64,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="avatarImageView" destination="tPZ-bc-rOf" id="EtI-nk-9EV"/>
+                <outlet property="avatarLoadingIndicator" destination="mPW-fy-mif" id="fJ3-k6-IWs"/>
                 <outlet property="nameLabel" destination="dPF-Nd-0ss" id="CLr-2s-Fsl"/>
                 <outlet property="sourceLabel" destination="Ohp-5Z-NKS" id="22e-63-EZj"/>
             </connections>

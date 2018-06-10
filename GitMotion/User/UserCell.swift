@@ -14,6 +14,8 @@ class UserCell: UITableViewCell {
 
     @IBOutlet weak var avatarImageView: UIImageView!
 
+    @IBOutlet weak var avatarLoadingIndicator: UIActivityIndicatorView!
+
     var viewModel: UserViewModel?
 
     func configure(with userViewModel: UserViewModel) {
@@ -21,7 +23,9 @@ class UserCell: UITableViewCell {
         nameLabel.text = userViewModel.name
         sourceLabel.text = userViewModel.source
 
+        avatarLoadingIndicator.startAnimating()
         userViewModel.avatar { [weak self] (image, error) in
+            self?.avatarLoadingIndicator.stopAnimating()
             if let image = image {
                 self?.avatarImageView.image = image
             }
@@ -34,5 +38,6 @@ class UserCell: UITableViewCell {
         viewModel = nil
 
         avatarImageView.image = nil
+        avatarLoadingIndicator.stopAnimating()
     }
 }
