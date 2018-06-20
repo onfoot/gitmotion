@@ -16,14 +16,14 @@ class UsersRouter {
     }
 
     func showUsers() {
-        let usersViewModel = UsersViewModel(router: self)
+        let usersViewModel = UsersViewModel(router: self, userFetcher: UserWebFetcher(), avatarFetcher: AvatarFetcher(urlSession: URLSession(configuration: .ephemeral)))
         let usersViewController = UsersViewController(viewModel: usersViewModel)
         usersViewController.title = "Users"
         navigationController.setViewControllers([usersViewController], animated: true)
     }
 
-    func showUser(_ user: UserType) {
-        let userViewModel = UserViewModel(user: user)
+    func showUser(_ user: UserType, parent: UsersViewModel) {
+        let userViewModel = parent.userViewModel(for: user)
         let userViewController = UserViewController(viewModel: userViewModel)
         userViewController.title = userViewModel.name
         navigationController.show(userViewController, sender: nil)

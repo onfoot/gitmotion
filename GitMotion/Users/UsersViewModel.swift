@@ -13,64 +13,27 @@ protocol UsersViewModelDelegate: class {
     func didReload()
 }
 
-enum ApiURL: String {
-    case github = "https://api.github.com/users"
-    case dailymotion = "https://api.dailymotion.com/users?fields=avatar_360_url,username"
-}
-
 class UsersViewModel {
-
-    private let client = NetworkClient()
+    private let userFetcher: UserFetching
+    private let avatarFetcher: AvatarFetching
     private let router: UsersRouter
 
     weak var delegate: UsersViewModelDelegate?
 
     private var users: [UserType] = []
 
-    required init(router: UsersRouter) {
+    required init(router: UsersRouter, userFetcher: UserFetching, avatarFetcher: AvatarFetching) {
         self.router = router
+        self.userFetcher = userFetcher
+        self.avatarFetcher = avatarFetcher
     }
 
     func reload() {
         delegate?.willReload()
 
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-
-            let semaphore = DispatchSemaphore(value: 0)
-
-            var users = [UserType]()
-
-            let githubRequest = Request<GithubResponse>(url: ApiURL.github.rawValue)
-
-            self?.client.send(githubRequest, success: { response, content in
-                if let usersResponse = content {
-                    users.append(contentsOf: usersResponse)
-                }
-
-                semaphore.signal()
-            }) { _ in
-                semaphore.signal()
-            }
-
-            let motionRequest = Request<DailymotionResponse>(url: ApiURL.dailymotion.rawValue)
-
-            self?.client.send(motionRequest, success: { response, content in
-                if let usersResponse = content?.users {
-                    users.append(contentsOf: usersResponse)
-                }
-
-                semaphore.signal()
-            }) { _ in
-                semaphore.signal()
-            }
-
-            semaphore.wait()
-            semaphore.wait()
-
-            DispatchQueue.main.async {
-                self?.users = users
-                self?.delegate?.didReload()
-            }
+        userFetcher.fetch { [weak self] users, error in
+            self?.users = users ?? []
+            self?.delegate?.didReload()
         }
     }
 
@@ -78,13 +41,17 @@ class UsersViewModel {
         return users.count
     }
 
+    func userViewModel(for user: UserType) -> UserViewModel {
+        return UserViewModel(user: user, avatarFetcher: avatarFetcher)
+    }
+
     func userViewModel(for index: Int) -> UserViewModel {
         let user = users[index]
-        return UserViewModel(user: user)
+        return UserViewModel(user: user, avatarFetcher: avatarFetcher)
     }
 
     func showUser(at index: Int) {
         let user = users[index]
-        self.router.showUser(user)
+        self.router.showUser(user, parent: self)
     }
 }

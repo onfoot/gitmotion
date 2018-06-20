@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A210B2DA20DA55310079E698 /* UserFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B2D920DA55310079E698 /* UserFetching.swift */; };
+		A210B2DC20DA55EB0079E698 /* UserWebFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B2DB20DA55EB0079E698 /* UserWebFetcher.swift */; };
 		A2401F5B20C73756006D31F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2401F5A20C73756006D31F5 /* AppDelegate.swift */; };
 		A2401F6020C73756006D31F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2401F5E20C73756006D31F5 /* Main.storyboard */; };
 		A2401F6220C73757006D31F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2401F6120C73757006D31F5 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A210B2D920DA55310079E698 /* UserFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFetching.swift; sourceTree = "<group>"; };
+		A210B2DB20DA55EB0079E698 /* UserWebFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWebFetcher.swift; sourceTree = "<group>"; };
 		A2401F5720C73756006D31F5 /* GitMotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitMotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2401F5A20C73756006D31F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2401F5F20C73756006D31F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				A2E107D720CB3F4D002A2CB7 /* UsersViewModel.swift */,
 				A2E107DB20CB5757002A2CB7 /* UsersViewController.swift */,
 				A2E107DC20CB5757002A2CB7 /* UsersViewController.xib */,
+				A210B2D920DA55310079E698 /* UserFetching.swift */,
+				A210B2DB20DA55EB0079E698 /* UserWebFetcher.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -210,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2401F6D20C73CFE006D31F5 /* Model.swift in Sources */,
+				A210B2DC20DA55EB0079E698 /* UserWebFetcher.swift in Sources */,
 				A2E107E120CB57CE002A2CB7 /* UserViewController.swift in Sources */,
 				A2E107D420CB383F002A2CB7 /* Network.swift in Sources */,
 				A2E107EA20CD0D06002A2CB7 /* UserViewModel.swift in Sources */,
@@ -218,6 +225,7 @@
 				A2E107E820CD098A002A2CB7 /* UsersRouter.swift in Sources */,
 				A2E107EC20CD0F24002A2CB7 /* AvatarFetcher.swift in Sources */,
 				A2E107E520CB5892002A2CB7 /* UserCell.swift in Sources */,
+				A210B2DA20DA55310079E698 /* UserFetching.swift in Sources */,
 				A2401F5B20C73756006D31F5 /* AppDelegate.swift in Sources */,
 				A2E107D620CB3955002A2CB7 /* API.swift in Sources */,
 				A2E107D820CB3F4D002A2CB7 /* UsersViewModel.swift in Sources */,

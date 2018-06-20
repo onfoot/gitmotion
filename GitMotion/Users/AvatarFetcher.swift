@@ -1,5 +1,5 @@
 //
-//  AvatarSource.swift
+//  AvatarFetcher.swift
 //  GitMotion
 //
 //  Created by Maciej Rutkowski on 10/06/2018.
@@ -17,11 +17,17 @@ private extension UserType {
 class AvatarCorruptedError: Error {}
 class NoAvatarError: Error {}
 
-class AvatarSource: NSObject {
+protocol AvatarFetching {
     typealias CompletionHandler = (_ user: UserType, _ image: UIImage?, _ error: Error?) -> Void
 
+    func avatar(for user: UserType, completion: @escaping CompletionHandler)
+    func cancel(for user: UserType)
+}
+
+class AvatarFetcher: NSObject, AvatarFetching {
+
     private var avatarTasks: [String: (user: UserType, task: URLSessionTask)] = [:]
-    private var completions: [String: [CompletionHandler]] = [:]
+    private var completions: [String: [AvatarFetching.CompletionHandler]] = [:]
 
     private lazy var cacheURL: URL = {
         var cacheURL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).last!)

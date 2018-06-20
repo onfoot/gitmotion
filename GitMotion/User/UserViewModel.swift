@@ -10,10 +10,11 @@ import UIKit
 
 class UserViewModel {
     private let user: UserType
-    private let avatarSource = AvatarSource(urlSession: URLSession(configuration: .ephemeral))
+    private let avatarFetcher: AvatarFetching
 
-    init(user: UserType) {
+    init(user: UserType, avatarFetcher: AvatarFetching) {
         self.user = user
+        self.avatarFetcher = avatarFetcher
     }
 
     var name: String {
@@ -25,7 +26,7 @@ class UserViewModel {
     }
 
     func avatar(_ completion: @escaping (UIImage?, Error?) -> Void) {
-        avatarSource.avatar(for: user) { user, image, error in
+        avatarFetcher.avatar(for: user) { user, image, error in
             DispatchQueue.main.async {
                 completion(image, error)
             }
@@ -33,6 +34,6 @@ class UserViewModel {
     }
 
     deinit {
-        avatarSource.cancel(for: user)
+        avatarFetcher.cancel(for: user)
     }
 }
