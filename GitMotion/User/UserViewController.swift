@@ -15,12 +15,15 @@ class UserViewController: UIViewController {
     @IBOutlet weak var avatarLoadingIndicator: UIActivityIndicatorView!
 
     @IBOutlet weak var sourceLabel: UILabel!
-    let viewModel: UserViewModel
+
+    var viewModel: UserViewModel {
+        didSet {
+            configure()
+        }
+    }
 
     required init(viewModel: UserViewModel) {
-
         self.viewModel = viewModel
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -30,6 +33,11 @@ class UserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
+    }
+
+    private func configure() {
+        guard self.isViewLoaded else { return }
 
         nameLabel.text = viewModel.name
         sourceLabel.text = viewModel.source
@@ -37,9 +45,8 @@ class UserViewController: UIViewController {
         avatarLoadingIndicator.startAnimating()
         viewModel.avatar { [weak self] image, _ in
             self?.avatarLoadingIndicator.stopAnimating()
-            if let image = image {
-                self?.avatarImageView.image = image
-            }
+            self?.avatarImageView.image = image
         }
+
     }
 }
