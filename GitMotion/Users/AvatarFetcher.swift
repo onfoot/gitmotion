@@ -60,7 +60,7 @@ class AvatarFetcher: NSObject, AvatarFetching {
                 if let strongSelf = self, let image = image {
                     let avatarURL = strongSelf.cacheURL.appendingPathComponent(user.avatarFilename)
 
-                    let pngData = UIImagePNGRepresentation(image)
+                    let pngData = image.pngData()
                     try? pngData?.write(to: avatarURL)
                 }
             }
